@@ -14,5 +14,5 @@
 <li>Crear comando de consola q modifique los comentarios a distintos formatos utilizando parámetros para Upper Case, Lowe Case o ETC. (EXTRA)</li>
 <li>En la vista de comentarios implementar un filtro por texto, autor. (EXTRA)</li>
 </ul>
-<p>Para subir el proyecto a GIT se tendrá q crear una rama nueva con el nombre del candidato y subirlo a esta. ¡No utilizar la rama MASTER!</p>
+<p style="color: red;">Para subir el proyecto a GIT se tendrá q crear una rama nueva con el nombre del candidato y subirlo a esta. ¡No utilizar la rama MASTER!</p>
 
