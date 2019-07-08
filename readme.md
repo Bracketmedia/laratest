@@ -11,6 +11,7 @@
 <li>Crear sistema de comentarios con autor, fecha y hora.</li>
 <li>Todos los roles podrán crear y leer los comentarios, pero solo admin podrá editarlos y solo sysadmin podrá eliminarlos.</li>
 <li>Realizar las acciones de comentarios asincrónicamente utilizando JQuery con llamadas de Ajax y animando la aparición y desaparición de registros.</li>
+    <li>Crear API REST q entregue un JSON con la lista de usuarios con sus roles y sin passwords.</li>
 <li>Crear comando de consola q modifique los comentarios a distintos formatos utilizando parámetros para Upper Case, Lowe Case o ETC. (EXTRA)</li>
 <li>En la vista de comentarios implementar un filtro por texto, autor. (EXTRA)</li>
 </ul>
