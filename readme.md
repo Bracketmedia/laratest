@@ -1,7 +1,7 @@
 <h4>Especificaciones de la tarea</h4>
 <ul>
 <li>Dar estilos a las vistas pre creadas utilizando SASS.</li>
-<li>Implementar sistema de roles extendiendo Auth de laravel y utilizar este solo para evaluación de roles.</li>
+<li>Implementar sistema de roles extendiendo Auth de laravel.</li>
 <ul>
 <li>Crear roles sysadmin, admin y user.</li>
 <li>Redireccionar según corresponda. (sysadmin -> systempanel, admin->adminpanel, user->home). Crear vistas segun corresponda.</li>
