@@ -6,11 +6,13 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\FullSearch;
 
 class User extends Authenticatable
 {
     use HasRoles;
     use Notifiable;
+    use FullSearch;
 
     const ROL_SYSADMIN = 'sysadmin';
     const ROL_ADMIN = 'admin';

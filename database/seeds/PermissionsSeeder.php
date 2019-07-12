@@ -15,5 +15,6 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'view_systempanel']);
         Permission::create(['name' => 'view_adminpanel']);
         Permission::create(['name' => 'view_home']);
+        Permission::create(['name' => 'crud_users']);
     }
 }

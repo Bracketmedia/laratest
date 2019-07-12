@@ -21,11 +21,27 @@ Route::middleware(['permission:view_systempanel'])
     ->get('/systempanel', 'HomeController@systempanel')
     ->name('home.sysadmin')
 ;
+
 Route::middleware(['permission:view_adminpanel'])
     ->get('/adminpanel', 'HomeController@adminpanel')
     ->name('home.admin')
 ;
+
 Route::middleware(['permission:view_home'])
     ->get('/home', 'HomeController@home')
     ->name('home.user')
 ;
+
+Route::group(
+    ['middleware' => ['permission:crud_users']],
+    function () {
+        Route::resource('users', 'UserController');
+        Route::get(
+            'users/{user}/destroyform',
+            [
+                'as' => 'users.destroyform',
+                'uses' => 'UserController@destroyform'
+            ]
+        );
+    }
+);

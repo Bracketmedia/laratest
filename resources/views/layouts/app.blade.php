@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="{{url('/')}}/" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -55,6 +56,26 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @can('view_systempanel')
+                                        <a class="dropdown-item" href="{{route('home.sysadmin')}}">
+                                            System Panel
+                                        </a>
+                                    @endcan
+                                    @can('view_adminpanel')
+                                        <a class="dropdown-item" href="{{route('home.admin')}}">
+                                            Admin Panel
+                                        </a>
+                                    @endcan
+                                    @can('view_home')
+                                        <a class="dropdown-item" href="{{route('home.user')}}">
+                                            User Panel
+                                        </a>
+                                    @endcan
+                                    @can('crud_users')
+                                        <a class="dropdown-item" href="{{route('users.index')}}">
+                                            CRUD Users
+                                        </a>
+                                    @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
