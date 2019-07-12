@@ -17,6 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/systempanel', 'HomeController@systempanel')->name('home.sysadmin');
-Route::get('/adminpanel', 'HomeController@adminpanel')->name('home.admin');
-Route::get('/home', 'HomeController@home')->name('home.user');
+Route::middleware(['permission:view_systempanel'])
+    ->get('/systempanel', 'HomeController@systempanel')
+    ->name('home.sysadmin')
+;
+Route::middleware(['permission:view_adminpanel'])
+    ->get('/adminpanel', 'HomeController@adminpanel')
+    ->name('home.admin')
+;
+Route::middleware(['permission:view_home'])
+    ->get('/home', 'HomeController@home')
+    ->name('home.user')
+;
