@@ -19,5 +19,6 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'crud_comments']);
         Permission::create(['name' => 'crud_comments_edit']);
         Permission::create(['name' => 'crud_comments_destroy']);
+        Permission::create(['name' => 'json_users']);
     }
 }

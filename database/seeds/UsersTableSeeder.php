@@ -38,5 +38,14 @@ class UsersTableSeeder extends Seeder
             'remember_token' => str_random(10),
         ]);
         $user->assignRole(User::ROL_USER);
+
+        $user = User::create([
+            'name'      => User::ROL_APIREST,
+            'email'     => User::ROL_APIREST.'@laratest.com',
+            'password'     => bcrypt(User::ROL_APIREST),
+            'email_verified_at' => now(),
+            'remember_token' => str_random(10),
+        ]);
+        $user->assignRole(User::ROL_APIREST);
     }
 }

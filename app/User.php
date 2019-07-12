@@ -7,16 +7,19 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\FullSearch;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasRoles;
+    use HasApiTokens;
     use Notifiable;
     use FullSearch;
 
     const ROL_SYSADMIN = 'sysadmin';
     const ROL_ADMIN = 'admin';
     const ROL_USER = 'user';
+    const ROL_APIREST = 'apirest';
 
     /**
      * The attributes that are mass assignable.

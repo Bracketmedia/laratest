@@ -28,5 +28,8 @@ class RolesSeeder extends Seeder
         $role = Role::create(['name' => User::ROL_USER]);
         $role->givePermissionTo('view_home');
         $role->givePermissionTo('crud_comments');
+
+        $role = Role::create(['name' => User::ROL_APIREST]);
+        $role->givePermissionTo('json_users');
     }
 }

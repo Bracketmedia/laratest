@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUsuarioRequest;
 use App\User;
-use \Mail;
+use \Response;
 
 class UserController extends Controller
 {
@@ -170,5 +170,15 @@ class UserController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    /**
+     * Display a listing of the resource in json format.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function json_users()
+    {
+        return Response::json($this->user->with('roles')->get());
     }
 }
