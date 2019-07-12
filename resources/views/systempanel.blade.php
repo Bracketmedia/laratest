@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Hola {{\Auth::user()->name}} bienvenido al System Panel
                 </div>
             </div>
         </div>
