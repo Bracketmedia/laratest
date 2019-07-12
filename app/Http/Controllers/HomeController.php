@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -25,4 +26,20 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function adminPanel()
+    {
+        return view('adminpanel');
+    }
+
+    public function systemPanel()
+    {
+        return view('systempanel');
+    }
+
+    public function forbbiden()
+    {
+        return view('forbbiden');
+    }
+
 }

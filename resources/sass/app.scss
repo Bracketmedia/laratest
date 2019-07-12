@@ -6,3 +6,15 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Card
+.card {
+    box-shadow: 0px 4px 26px 4px $shadow;
+
+}
+
+.card-header {
+    background: $blueToCyan;
+    color: $white;
+}
+
