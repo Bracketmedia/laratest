@@ -18,6 +18,15 @@ class Comment extends Model
         'comment', 'user_id',
     ];
 
+    /**
+     * The attributes that name.
+     *
+     * @var array
+     */
+    protected $fillname = [
+        'comment'
+    ];
+
     public function user()
     {
       return $this->belongsTo('App\User');
