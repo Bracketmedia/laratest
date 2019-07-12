@@ -52,6 +52,13 @@ Route::group(
         Route::resource('comments', 'CommentController', [
             'except' => ['edit', 'update', 'destroy']
         ]);
+        Route::get(
+            'comments/{comment}/getone',
+            [
+                'as' => 'comments.getone',
+                'uses' => 'CommentController@getone'
+            ]
+        );
     }
 );
 Route::group(

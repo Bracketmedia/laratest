@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreCommentRequest;
 use App\Comment;
 use \Mail;
+use \Response;
 
 class CommentController extends Controller
 {
@@ -39,16 +40,6 @@ class CommentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('comments.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -62,46 +53,10 @@ class CommentController extends Controller
         ]);
         $oStore->save();
 
-        return redirect(route('comments.index'))->with(
-            'success',
-            'El comentario se agregó con éxito'
-        );
-    }
+        $view = view('comments.tablerow', ['row' => $oStore])->render();
+        $oStore = array_merge($oStore->toArray(), array('tablerow' => $view));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $comment = $this->comment
-            ->find($id)
-        ;
-        if ($comment) {
-            return view('comments.show', compact('comment'));
-        } else {
-            abort(404);
-        }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $comment = $this->comment
-            ->find($id)
-        ;
-        if ($comment) {
-            return view('comments.edit', compact('comment'));
-        } else {
-            abort(404);
-        }
+        return Response::json($oStore);
     }
 
     /**
@@ -118,31 +73,13 @@ class CommentController extends Controller
         ;
         if ($comment) {
             $comment->comment = $request->get('comment');
-            $comment->user_id = \Auth::user()->id;
+            #$comment->user_id = \Auth::user()->id;
             $comment->save();
 
-            return redirect(route('comments.index'))->with(
-                'success',
-                'El comentario se modificó con éxito'
-            );
-        } else {
-            abort(404);
-        }
-    }
+            $view = view('comments.tablerow', ['row' => $comment])->render();
+            $comment = array_merge($comment->toArray(), array('tablerow' => $view));
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroyform($id)
-    {
-        $comment = $this->comment
-            ->find($id)
-        ;
-        if ($comment) {
-            return view('comments.destroyform', compact('comment'));
+            return Response::json($comment);
         } else {
             abort(404);
         }
@@ -162,12 +99,22 @@ class CommentController extends Controller
         if ($comment) {
             $comment->delete();
 
-            return redirect(route('comments.index'))->with(
-                'success',
-                'El comentario se borró con éxito'
-            );
+            return Response::json($comment);
         } else {
             abort(404);
         }
+    }
+
+    /**
+     * Get data of the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function getone($id)
+    {   
+        $user  = Comment::where('id', $id)->first();
+ 
+        return Response::json($user);
     }
 }
