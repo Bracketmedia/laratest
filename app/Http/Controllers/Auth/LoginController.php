@@ -36,4 +36,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Get the post register / login redirect to.
+     *
+     * @return string
+     */
+    public function redirectTo()
+    {
+        return route('home.' . \Auth::user()->roles->first()->name);
+    }
 }

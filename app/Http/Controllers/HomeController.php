@@ -17,11 +17,31 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application dashboard for sysadmin
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function systempanel()
+    {
+        return view('systempanel');
+    }
+
+    /**
+     * Show the application dashboard for admin.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function adminpanel()
+    {
+        return view('adminpanel');
+    }
+
+    /**
+     * Show the application dashboard for user.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function home()
     {
         return view('home');
     }
