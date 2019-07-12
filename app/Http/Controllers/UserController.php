@@ -19,7 +19,6 @@ class UserController extends Controller
     public function __construct(User $user)
     {
         $this->user = $user;
-        $this->filter = 'usuarios_list_filter';
     }
 
     /**
