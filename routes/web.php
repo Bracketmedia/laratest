@@ -45,3 +45,35 @@ Route::group(
         );
     }
 );
+
+Route::group(
+    ['middleware' => ['permission:crud_comments']],
+    function () {
+        Route::resource('comments', 'CommentController', [
+            'except' => ['edit', 'update', 'destroy']
+        ]);
+    }
+);
+Route::group(
+    ['middleware' => ['permission:crud_comments_edit']],
+    function () {
+        Route::resource('comments', 'CommentController', [
+            'only' => ['edit', 'update']
+        ]);
+    }
+);
+Route::group(
+    ['middleware' => ['permission:crud_comments_destroy']],
+    function () {
+        Route::resource('comments', 'CommentController', [
+            'only' => ['destroy']
+        ]);
+        Route::get(
+            'comments/{comment}/destroyform',
+            [
+                'as' => 'comments.destroyform',
+                'uses' => 'CommentController@destroyform'
+            ]
+        );
+    }
+);

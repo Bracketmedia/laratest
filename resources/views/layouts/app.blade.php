@@ -73,7 +73,12 @@
                                     @endcan
                                     @can('crud_users')
                                         <a class="dropdown-item" href="{{route('users.index')}}">
-                                            CRUD Users
+                                            ABM de Usuarios
+                                        </a>
+                                    @endcan
+                                    @can('crud_comments')
+                                        <a class="dropdown-item" href="{{route('comments.index')}}">
+                                            ABM de Comentarios
                                         </a>
                                     @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}"
