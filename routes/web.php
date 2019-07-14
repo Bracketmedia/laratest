@@ -18,3 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group([
+    'middleware' => ['auth','roles'],
+    'roles' => ['sysadmin','admin'],
+    'prefix' => 'admin'
+], function(){
+
+    Route::get('/users', 'UsersController@index');
+    Route::get('/users/create','UsersController@create')->name('users.create');
+    Route::post('/users/create','UsersController@store')->name('users.store');
+    Route::get('/users/edit/{id}', 'UsersController@edit')->name('users.edit');
+    Route::put('/users/update/{id}', 'UsersController@update')->name('users.update');
+    Route::get('/users/delete/{id}', 'UsersController@destroy')->name('users.delete');
+});

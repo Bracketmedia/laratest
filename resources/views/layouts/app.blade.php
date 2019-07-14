@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Fontawesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
 </head>
 <body>
     <div id="app">
@@ -73,6 +76,14 @@
         </nav>
 
         <main class="py-4">
+            @if( session('message') )
+                <div class="container">
+                    <div class="alert alert-primary" role="alert">
+                        {{ session('message') }}
+                    </div>  
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>
